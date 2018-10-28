@@ -10,7 +10,7 @@ global asm_main
     outmsg3 db ", njihov zbir je ",0
 
 .segment .bss
-    input1 resd 1 ; rezervicemo jednu double vrijednost, referenca
+    input1 resd 1 ; rezervicemo jednu double word vrijednost, referenca
     input2 resd 1
 
 segment .text

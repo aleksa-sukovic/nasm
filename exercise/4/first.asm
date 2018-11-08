@@ -19,11 +19,18 @@ asm_main:
     xor ecx, ecx ; postavi ecx 0
     mov dword[ukupan_broj], 0 ; popuni cijeli double word sa nulama
     call read_int ; u eax se nalazi unijeto N
+    mov ecx, eax
 
     for:
         add dword[ukupan_broj], ecx ; ukupna_vrijednost += trenutni broj
         loop for
 
+        mov eax rezultat_poruka
+        call print_string
+        mov eax, [ukupan_broj]
+        call print_int
+        call print_nl
+        
     popa
     mov eax, 0
     leave

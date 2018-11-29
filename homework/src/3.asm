@@ -3,8 +3,7 @@ segment .data
     prompt1 db "Unesi broj N: ",0
 
 segment .bss
-    original_array resd 100 ; 10 * 4 bytes for array
-    copy_array resd 100 ; 10 * 4 bytes for array
+    array_space resw 10
     current_index resd 1
     current_element resd 1
     array_length resd 1
@@ -38,32 +37,30 @@ asm_main:
             mov [current_element], eax
 
             mov eax, [current_index]
-            mov edx, 4
-            mul edx
-            add eax, copy_array
+            mov edx, 2
+            mul edx ; current element offset in eax
 
             mov edx, [current_element]
-            mov [eax], edx
+            mov [array_space + eax], edx
 
-            mov edx, [current_index]
-            add edx, 1
-            mov [current_index], edx
             xor edx, edx
+            inc dword[current_index]
             inc dword[array_length]
-            jmp advance_read_loop
 
         advance_read_loop:
             loop read_loop
 
     mov ecx, [array_length]
+    mov dword[current_index], 0
     print_loop:
-        mov eax, ecx
-        mov edx, 4
-        mul edx
-        add eax, copy_array
-        mov edx, eax
-        mov eax, [edx]
+        mov eax, [current_index]
+        mov edx, 2
+        mul edx ; current element offset in eax
+
+        mov eax, [array_space + eax]
         call print_int
+        
+        inc dword[current_index]
         loop print_loop
 
     popa

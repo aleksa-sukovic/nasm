@@ -1,4 +1,4 @@
-%include "../lib/asm_io.inc"
+%include "../../lib/asm_io.inc"
 segment .data
     prompt1 db "Unesi broj N: ",0
 

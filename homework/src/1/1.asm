@@ -1,4 +1,4 @@
-%include "../lib/asm_io.inc"
+%include "../../lib/asm_io.inc"
 ;
 ; Napisati program kojim se unosi do devet pozitivnih jednocifrenih brojeva i odredjuje
 ; se koliko je od unijetih brojeva parno, a koliko neparno

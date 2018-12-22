@@ -1,4 +1,4 @@
-%include "../lib/asm_io.inc"
+%include "../../lib/asm_io.inc"
 
 ;
 ; Prikazati naziv dana u zavisnosti od pritisnutog tastera od 1 do 7. 
